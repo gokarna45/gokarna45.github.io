@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Education &amp; Experience · Gokarna Bahadur Thapa</title>
+<meta name="description" content="Education, professional experience, research projects and training of Gokarna Bahadur Thapa, energy systems engineer in Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Same palette as the home page: #F2F1EF, #D8CFD0, #B1A8A4, #697184, #413F3D.
+     Layout: title band; education cards with a figure panel; experience carousel (scroll-snap) with arrows and dots; lists for training and leadership. */
+  --paper: #F2F1EF;
+  --surface: #FBFAF9;
+  --blush: #D8CFD0;
+  --taupe: #B1A8A4;
+  --slate: #697184;
+  --slate-deep: #4D5466;
+  --charcoal: #413F3D;
+  --muted: #625D5A;
+  --display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--charcoal); font: 400 1rem/1.7 var(--body); }
+a { color: var(--slate-deep); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--slate); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+/* Header (same as home) */
+.top { position: sticky; top: 0; z-index: 10; background: rgba(242, 241, 239, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--blush); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; flex-wrap: wrap; }
+.brand { font: 400 1.45rem/1 var(--display); color: var(--charcoal); text-decoration: none; }
+nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; flex-wrap: wrap; }
+nav a { color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 600; }
+nav a:hover, nav a[aria-current="page"] { color: var(--charcoal); }
+nav a[aria-current="page"] { border-bottom: 1.5px solid var(--slate); padding-bottom: 3px; }
+
+/* Title band */
+.band { position: relative; overflow: hidden; padding: 72px 0 56px; border-bottom: 1px solid var(--blush); }
+.band::after { content: ""; position: absolute; inset: -60% -10% auto 45%; height: 160%; background: radial-gradient(closest-side, rgba(105, 113, 132, .25), rgba(105, 113, 132, 0)); pointer-events: none; }
+.band .wrap { position: relative; z-index: 1; }
+.back { display: inline-flex; gap: 8px; align-items: center; font-size: .88rem; font-weight: 700; text-decoration: none; color: var(--slate-deep); margin-bottom: 22px; }
+.band h1 { font: 400 clamp(2.6rem, 6vw, 4.2rem)/1.04 var(--display); }
+.band p { max-width: 60ch; color: var(--muted); font-size: 1.05rem; margin: 16px 0 0; }
+.jump { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+.jump a { font-size: .85rem; font-weight: 700; text-decoration: none; color: var(--charcoal); padding: 8px 16px; border: 1.5px solid var(--charcoal); border-radius: 999px; }
+.jump a:hover { background: var(--charcoal); color: var(--paper); }
+
+/* Section titles */
+section.block { padding: 88px 0 8px; }
+.title { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+.title .label { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--slate-deep); }
+.title h2 { font: 400 clamp(2.1rem, 4vw, 2.9rem)/1.1 var(--display); margin: 10px 0 10px; }
+.title p { margin: 0; color: var(--muted); }
+
+/* Education card */
+.edu { display: grid; grid-template-columns: 1.4fr 1fr; background: var(--surface); border: 1px solid var(--blush); border-radius: 16px; overflow: hidden; }
+.edu .text { padding: 36px 40px; }
+.edu .when { font-size: .8rem; font-weight: 700; letter-spacing: .06em; color: var(--slate-deep); text-transform: uppercase; }
+.edu h3 { font: 400 2rem/1.15 var(--display); margin: 8px 0 4px; }
+.edu .deg { font-weight: 700; margin: 0; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 20px; }
+.facts span { font-size: .82rem; font-weight: 700; padding: 5px 12px; border-radius: 999px; background: rgba(105, 113, 132, .12); color: var(--slate-deep); }
+.edu dl { margin: 0; display: grid; gap: 14px; }
+.edu dt { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.edu dd { margin: 2px 0 0; }
+.edu dd small { display: block; color: var(--muted); font-size: .9rem; margin-top: 2px; }
+.figure { background: var(--charcoal); color: var(--paper); padding: 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; position: relative; overflow: hidden; }
+.figure::before { content: ""; position: absolute; inset: auto -30% -40% auto; width: 80%; aspect-ratio: 1; border-radius: 50%; border: 1.5px solid rgba(216, 207, 208, .18); }
+.figure::after { content: ""; position: absolute; inset: auto -12% -22% auto; width: 50%; aspect-ratio: 1; border-radius: 50%; border: 1.5px solid rgba(216, 207, 208, .14); }
+.figure .k { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe); }
+.figure b { display: block; font: 400 3.4rem/1 var(--display); }
+.figure b small { font: 700 .9rem var(--body); color: var(--blush); margin-left: 6px; }
+.figure p { margin: 8px 0 0; color: var(--blush); font-size: .92rem; position: relative; z-index: 1; }
+
+/* Experience carousel */
+.carousel { position: relative; }
+.track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 16px; }
+.track::-webkit-scrollbar { display: none; }
+.slide { scroll-snap-align: start; display: grid; grid-template-columns: 1fr 1.35fr; background: var(--surface); border: 1px solid var(--blush); border-radius: 16px; overflow: hidden; min-height: 360px; }
+.slide .figure { border-radius: 0; }
+.slide .text { padding: 36px 40px; display: flex; flex-direction: column; gap: 6px; }
+.slide .when { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--slate-deep); }
+.slide h3 { font: 400 1.75rem/1.2 var(--display); }
+.slide .org { font-weight: 700; margin: 0 0 8px; }
+.slide ul { margin: 0; padding-left: 18px; color: var(--muted); }
+.slide li { margin-bottom: 6px; }
+.slide li::marker { color: var(--slate); }
+.slide .client { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--blush); font-size: .82rem; font-weight: 700; }
+.controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 22px; }
+.arrow { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--charcoal); background: transparent; color: var(--charcoal); font-size: 1.1rem; cursor: pointer; display: grid; place-items: center; }
+.arrow:hover { background: var(--charcoal); color: var(--paper); }
+.dots { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.dots button { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 0; background: var(--taupe); cursor: pointer; }
+.dots button[aria-current="true"] { background: var(--charcoal); width: 24px; border-radius: 999px; }
+.count { font-size: .85rem; font-weight: 700; color: var(--muted); min-width: 56px; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* Two-column lists */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.panel { background: var(--surface); border: 1px solid var(--blush); border-radius: 16px; padding: 30px 32px; }
+.panel h3 { font: 400 1.6rem var(--display); margin-bottom: 14px; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--blush); }
+.list li:first-child { border-top: 0; padding-top: 0; }
+.list .d { font-size: .8rem; font-weight: 700; color: var(--slate-deep); padding-top: 2px; }
+.list strong { display: block; }
+.list span { color: var(--muted); font-size: .9rem; }
+
+
+/* Photo gallery inside a figure panel (activated when data-photos lists images) */
+.figure.has-photos { padding: 0; gap: 0; justify-content: flex-start; background: var(--charcoal); }
+.figure.has-photos::before, .figure.has-photos::after { display: none; }
+.g-main { position: relative; flex: 1; min-height: 260px; border: 0; padding: 0; margin: 0; cursor: zoom-in; background: #2c2b2a; overflow: hidden; }
+.g-main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.g-main:hover img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { .g-main img { transition: none; } .g-main:hover img { transform: none; } }
+.g-chip { position: absolute; left: 14px; top: 14px; z-index: 1; background: rgba(251, 250, 249, .92); color: var(--charcoal); font-size: .78rem; font-weight: 700; padding: 5px 11px; border-radius: 999px; }
+.g-zoom { position: absolute; right: 14px; bottom: 14px; z-index: 1; background: rgba(65, 63, 61, .8); color: #fff; font-size: .75rem; font-weight: 700; padding: 5px 10px; border-radius: 999px; }
+.g-thumbs { display: flex; gap: 6px; padding: 10px; overflow-x: auto; background: var(--charcoal); scrollbar-width: thin; }
+.g-thumbs button { flex: 0 0 auto; width: 54px; height: 40px; padding: 0; border: 2px solid transparent; border-radius: 6px; overflow: hidden; cursor: pointer; background: #2c2b2a; opacity: .7; }
+.g-thumbs button[aria-current="true"] { border-color: var(--paper); opacity: 1; }
+.g-thumbs button:hover { opacity: 1; }
+.g-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Full-screen viewer */
+.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(24, 23, 22, .985); display: none; grid-template-rows: auto minmax(0, 1fr) auto auto; color: #fff; }
+.lightbox.open { display: grid; }
+.lb-bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; font-size: .88rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.lb-btn { background: transparent; border: 0; color: #fff; font-size: 1.6rem; line-height: 1; width: 44px; height: 44px; cursor: pointer; border-radius: 6px; }
+.lb-btn:hover { background: rgba(255, 255, 255, .12); }
+.lb-stage { position: relative; display: grid; place-items: center; min-height: 0; padding: 0 72px; touch-action: pan-y; }
+.lb-stage img { max-width: 100%; max-height: calc(100vh - 210px); object-fit: contain; box-shadow: 0 20px 60px rgba(0, 0, 0, .5); user-select: none; }
+.lb-prev, .lb-next { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: rgba(0, 0, 0, .55); border: 1px solid rgba(255, 255, 255, .25); color: #fff; font-size: 1.4rem; cursor: pointer; border-radius: 4px; }
+.lb-prev { left: 14px; } .lb-next { right: 14px; }
+.lb-prev:hover, .lb-next:hover { background: rgba(0, 0, 0, .8); }
+.lb-caption { text-align: center; padding: 12px 20px 4px; color: var(--blush); font-size: .92rem; min-height: 1.6em; }
+.lb-strip { display: flex; gap: 6px; justify-content: center; padding: 10px 16px 18px; overflow-x: auto; }
+.lb-strip button { flex: 0 0 auto; width: 64px; height: 46px; padding: 0; border: 2px solid transparent; opacity: .55; cursor: pointer; background: #2c2b2a; }
+.lb-strip button[aria-current="true"] { border-color: #fff; opacity: 1; }
+.lb-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 600px) { .lb-stage { padding: 0 8px; } .lb-prev, .lb-next { width: 40px; height: 40px; } }
+
+/* Footer */
+footer { margin-top: 110px; background: var(--charcoal); color: var(--paper); padding: 64px 0 40px; }
+footer .grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; }
+footer h2 { font: 400 clamp(2.2rem, 4.4vw, 3.2rem)/1.05 var(--display); }
+footer p { color: var(--blush); max-width: 52ch; }
+footer a { color: var(--paper); }
+.contact { display: grid; gap: 18px; }
+.contact div span { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe); margin-bottom: 2px; }
+.fine { margin-top: 48px; padding-top: 20px; border-top: 1px solid rgba(216, 207, 208, .2); font-size: .82rem; color: var(--taupe); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .edu, .slide, .cols, footer .grid { grid-template-columns: 1fr; }
+  .figure { min-height: 200px; }
+  .edu .text, .slide .text { padding: 28px; }
+}
+@media (max-width: 520px) {
+  nav ul { gap: 14px; }
+  .list li { grid-template-columns: 1fr; gap: 2px; }
+  .panel { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../">Gokarna B. Thapa</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="../#work">Work</a></li>
+        <li><a href="../#publications">Publications</a></li>
+        <li><a href="./" aria-current="page">Education &amp; experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="band">
+    <div class="wrap">
+      <a class="back" href="../">← Back to home</a>
+      <h1>Education &amp; experience</h1>
+      <p>Mechanical engineering training at Kathmandu University, followed by energy planning, waste-to-energy, green hydrogen and climate policy work for Nepal’s government agencies and development partners.</p>
+      <div class="jump">
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#research">Research projects</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#training">Training</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="block" id="education">
+    <div class="wrap">
+      <div class="title">
+        <div class="label">Academic</div>
+        <h2>Education</h2>
+      </div>
+      <article class="edu">
+        <div class="text">
+          <div class="when">Aug 2019 – May 2024 · Dhulikhel, Nepal</div>
+          <h3>Kathmandu University</h3>
+          <p class="deg">Bachelor of Engineering in Mechanical Engineering</p>
+          <div class="facts"><span>CGPA 3.4 / 4.0</span><span>148 credits</span><span>Oral presenter, 3rd University Scholar Conference</span></div>
+          <dl>
+            <div>
+              <dt>Thesis</dt>
+              <dd>Electric vehicle battery temperature prediction using drive cycles for cooling-system design
+                <small>Modelled a 600-cell (6P100S) pack in MATLAB under drive cycles, charging and ambient conditions; Python regression predicted cell temperature with over 90% accuracy.</small></dd>
+            </div>
+            <div>
+              <dt>Research lab</dt>
+              <dd>Energy Systems &amp; Technology Research Lab · Green Hydrogen Lab</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="figure" aria-hidden="true" data-chip="Kathmandu University" data-photos="photos/ku-formula-bharat-track.jpg | Kathmandu University team with car E36 at Formula Bharat 2024, India ; photos/ku-formula-bharat-team.jpg | Formula Bharat 2024: the team in the paddock with car E36 ; photos/ku-udaan-rocket-test.jpg | Team Udaan rocket motor test firing, Kathmandu University ; photos/ku-udaan-checklist.jpg | Team Udaan pre-test technical and safety checklist ; photos/ku-lca-training.jpg | Life Cycle Assessment training (ISO 14040), Kathmandu University, 2025">
+          <div class="k">Thesis model</div>
+          <div>
+            <b>600<small>cells</small></b>
+            <p>6P100S EV battery pack simulated for thermal management</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="title">
+        <div class="label">Professional</div>
+        <h2>Experience</h2>
+        <p>Use the arrows or swipe to move through each role and project.</p>
+      </div>
+
+      <div class="carousel" aria-roledescription="carousel" aria-label="Professional experience">
+        <div class="track" id="track" tabindex="0">
+
+          <article class="slide" aria-roledescription="slide" aria-label="1 of 9">
+            <div class="figure" aria-hidden="true"><div class="k">Current role</div><div><b>100%<small>RE</small></b><p>renewable-energy pathway for Nepal’s NDC 3.0</p></div></div>
+            <div class="text">
+              <div class="when">Nov 2026 – present · Kathmandu</div>
+              <h3>Project Coordinator</h3>
+              <p class="org">Prakriti Resources Centre (PRC)</p>
+              <ul>
+                <li>Coordinating BEACON (Bridging Engagement Across Community and National Actions for Climate and Energy Resilience in Nepal).</li>
+                <li>Linking national recommendations for 100% renewable energy in NDC 3.0 with a community energy transition plan in Melamchi Municipality.</li>
+                <li>Drafting the terms of reference for renewable-energy and climate courses.</li>
+              </ul>
+              <div class="client">Funded by Bread for the World</div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="slide" aria-label="2 of 9">
+            <div class="figure" aria-hidden="true" data-photos="photos/wte-esia-presentation.jpg | Presenting the environmental and social impact assessment (ESIA) approach ; photos/wte-stakeholder-meeting.jpg | Consultation meeting with stakeholders"><div class="k">Waste-to-energy</div><div><b>37,000<small>tCO₂e/yr</small></b><p>mitigation across NPR 1.5 billion of investment</p></div></div>
+            <div class="text">
+              <div class="when">Feb 2025 – Nov 2026 · Multiscope Solution</div>
+              <h3>Waste-to-energy feasibility, six municipalities</h3>
+              <p class="org">Project Engineer</p>
+              <ul>
+                <li>Led the winning technical proposal: methodology, work plan, staffing and implementation strategy.</li>
+                <li>Led stakeholder consultations, waste characterisation and field surveys.</li>
+                <li>Designed decentralised Bio-CNG plants (10–50 TPD; 160 TPD combined) producing about 4.7 t/day to replace LPG.</li>
+                <li>Built IRR/NPV and IPCC-based GHG models aligned with Green Climate Fund criteria.</li>
+              </ul>
+              <div class="client">AEPC · World Bank MGEAP · proposed GCF programme</div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="slide" aria-label="3 of 9">
+            <div class="figure" aria-hidden="true"><div class="k">Green hydrogen</div><div><b>14,048<small>t H₂/yr</small></b><p>from a modelled 100 MW electrolysis plant</p></div></div>
+            <div class="text">
+              <div class="when">Feb 2025 – Nov 2026 · Multiscope Solution</div>
+              <h3>Stock-taking of green hydrogen in Nepal</h3>
+              <p class="org">Project Engineer</p>
+              <ul>
+                <li>Contributed technical inputs on fertiliser, industry, transport and decentralised energy applications.</li>
+                <li>Modelled 100 MW hydrogen and 150 MW green-urea plants producing 211,680 t urea per year.</li>
+              </ul>
+              <div class="client">Alternative Energy Promotion Centre (AEPC)</div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="slide" aria-label="4 of 9">
+            <div class="figure" aria-hidden="true"><div class="k">Energy planning</div><div><b>7<small>municipalities</small></b><p>LEAP-assisted municipal energy plans</p></div></div>
+            <div class="text">
+              <div class="when">Feb 2025 – Nov 2026 · Multiscope Solution</div>
+              <h3>National and municipal energy planning</h3>
+              <p class="org">Project Engineer</p>
+              <ul>
+                <li>Built a LEAP demand model for Nepal’s Sector-Wise Energy Efficiency Action Plan 2026–2035.</li>
+                <li>Translated household energy data into baseline models and scenarios for seven municipal energy plans.</li>
+                <li>Assessed a clean-cooking pathway of 75,203 cookstoves and 295 biogas systems, avoiding about 89,700 tCO₂e a year.</li>
+              </ul>
+              <div class="client">AEPC · LEAP · MAED</div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="slide" aria-label="5 of 9">
+            <div class="figure" aria-hidden="true"><div class="k">Climate policy</div><div><b>1.48<small>NPR bn/yr</small></b><p>revenue from a USD 1/tCO₂e carbon tax</p></div></div>
+            <div class="text">
+              <div class="when">Feb 2025 – Nov 2026 · Multiscope Solution</div>
+              <h3>Carbon pricing and carbon finance</h3>
+              <p class="org">Project Engineer</p>
+              <ul>
+                <li>Assessed carbon tax, ETS and hybrid options across energy, IPPU, waste and AFOLU for Nepal’s National Carbon Pricing Policy.</li>
+                <li>Supported price benchmarking, emissions and fiscal-impact modelling, and MRV design.</li>
+                <li>Supported the National Carbon Finance Handbook, reviewing NDC 3.0, NAP, LTS and Article 6 guidance.</li>
+              </ul>
+              <div class="client">United Nations Development Programme (UNDP)</div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="slide" aria-label="6 of 9">
+            <div class="figure" aria-hidden="true"><div class="k">Field assessments</div><div><b>430<small>sites</small></b><p>industrial, commercial and residential energy audits</p></div></div>
+            <div class="text">
+              <div class="when">Feb 2025 – Nov 2026 · Multiscope Solution</div>
+              <h3>Energy audits and solar irrigation</h3>
+              <p class="org">Project Engineer</p>
+              <ul>
+                <li>Audited 30 industrial facilities, 100 commercial establishments and 300 households, identifying 4–12% annual savings.</li>
+                <li>Analysed 273 household surveys on diesel pumps across 20 municipalities of Madhesh Province; estimated a 4.8-year payback for subsidised solar pumps.</li>
+              </ul>
+              <div class="client">WECS · AEPC</div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="slide" aria-label="7 of 9">
+            <div class="figure" aria-hidden="true"><div class="k">Biogas monitoring</div><div><b>46<small>plants</small></b><p>inspected for quality and compliance</p></div></div>
+            <div class="text">
+              <div class="when">Jul 2026 · Kavrepalanchowk</div>
+              <h3>Short-term Consultant Engineer</h3>
+              <p class="org">Alternative Energy Promotion Centre (AEPC)</p>
+              <ul>
+                <li>Monitored 46 domestic biogas plants for construction quality, functionality and compliance with AEPC standards.</li>
+                <li>Recommended corrective actions and prepared plant-wise monitoring reports.</li>
+              </ul>
+              <div class="client">AEPC</div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="slide" aria-label="8 of 9">
+            <div class="figure" aria-hidden="true"><div class="k">Agricultural energy</div><div><b>Solar<small>irrigation</small></b><p>energy surveys of farm technologies</p></div></div>
+            <div class="text">
+              <div class="when">Jul 2024 – Feb 2025 · Birgunj</div>
+              <h3>Mechanical Engineer</h3>
+              <p class="org">National Innovation Center</p>
+              <ul>
+                <li>Designed survey sampling and carried out energy surveys of agricultural technologies, especially solar irrigation.</li>
+                <li>Supervised sub-engineers and factory workers; set preventive-maintenance schedules.</li>
+                <li>Wrote technical reports on project outcomes.</li>
+              </ul>
+              <div class="client">National Innovation Center</div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="slide" aria-label="9 of 9">
+            <div class="figure" aria-hidden="true"><div class="k">Energy storage</div><div><b>3<small>storage types</small></b><p>sensible, latent and thermochemical</p></div></div>
+            <div class="text">
+              <div class="when">Dec 2023 – Apr 2024 · Dhulikhel</div>
+              <h3>University Research Assistant</h3>
+              <p class="org">Energy Systems &amp; Technology Research Lab, Kathmandu University</p>
+              <ul>
+                <li>Researched solar-powered stationary storage and thermal energy storage.</li>
+                <li>Performed structural analysis of an electric-vehicle chassis.</li>
+                <li>Mentored junior researchers on community-focused projects.</li>
+              </ul>
+              <div class="client">Kathmandu University</div>
+            </div>
+          </article>
+
+        </div>
+        <div class="controls">
+          <button class="arrow" id="prev" type="button" aria-label="Previous slide">←</button>
+          <div class="dots" id="dots" role="group" aria-label="Choose slide"></div>
+          <span class="count" id="count" aria-live="polite">1 / 9</span>
+          <button class="arrow" id="next" type="button" aria-label="Next slide">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH + LEADERSHIP -->
+  <section class="block" id="research">
+    <div class="wrap">
+      <div class="title">
+        <div class="label">Beyond the classroom</div>
+        <h2>Research projects &amp; leadership</h2>
+      </div>
+      <div class="cols">
+        <div class="panel">
+          <h3>Research projects</h3>
+          <ul class="list">
+            <li><span class="d">2023–24</span><div><strong>EV battery temperature prediction</strong><span>B.E. thesis: MATLAB pack model and Python regression, over 90% accuracy.</span></div></li>
+            <li><span class="d">2022–23</span><div><strong>PEM fuel cell humidification</strong><span>Green Hydrogen Lab, KU: built a bubble humidifier; anode humidity above 85% reduced performance. Presented orally at the 3rd University Scholar Conference, Dec 2023.</span></div></li>
+            <li><span class="d">2021–22</span><div><strong>Plastic extrusion machine</strong><span>Design Lab, KU: remodelled in SOLIDWORKS, then fabricated and tested for throughput.</span></div></li>
+          </ul>
+        </div>
+        <div class="panel" id="leadership">
+          <h3>Competitions &amp; leadership</h3>
+          <ul class="list">
+            <li><span class="d">2023–24</span><div><strong>Team Lead, Body Design &amp; Fabrication</strong><span>Formula Bharat 2024, India: led body design and FEA/topology optimisation, cutting manufacturing cost by 10%.</span></div></li>
+            <li><span class="d">2022–23</span><div><strong>Separation mechanism</strong><span>Spaceport America Cup 2023, USA: developed a non-pyrotechnic latch separation mechanism.</span></div></li>
+            <li><span class="d">2023–24</span><div><strong>Founding member, Team Udaan</strong><span>Sounding-rocket research and development, Kathmandu University.</span></div></li>
+            <li><span class="d">2025–</span><div><strong>Memberships</strong><span>YOUNGO, the UNFCCC youth constituency; IWA Young Water Professionals Nepal.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING -->
+  <section class="block" id="training">
+    <div class="wrap">
+      <div class="title">
+        <div class="label">Continuing learning</div>
+        <h2>Training &amp; certifications</h2>
+      </div>
+      <div class="panel" style="max-width: 860px; margin: 0 auto;">
+        <ul class="list">
+          <li><span class="d">Oct 2025</span><div><strong>Energy demand projection with MAED</strong><span>Model for Analysis of Energy Demand</span></div></li>
+          <li><span class="d">Jul 2025</span><div><strong>Life Cycle Thinking and Life Cycle Assessment</strong><span>Renewable and Sustainable Energy Laboratory, Kathmandu University</span></div></li>
+          <li><span class="d">Jun 2025</span><div><strong>Circular Economy in Industry</strong><span>UNIDO · UN SDG:Learn</span></div></li>
+          <li><span class="d">Jun 2025</span><div><strong>Global Energy and Climate Policy</strong></div></li>
+          <li><span class="d">Apr 2025</span><div><strong>Renewable Energy Deployment in Nigeria</strong><span>Global Energy Interconnection Development and Cooperation Organization (GEIDCO)</span></div></li>
+          <li><span class="d">Mar 2025</span><div><strong>Excel Time Series Models for Business Forecasting</strong></div></li>
+          <li><span class="d">Aug 2024</span><div><strong>CFD Foundation Course</strong><span>Flowthermolab</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h2>Let’s discuss energy</h2>
+        <p>I’m glad to hear from researchers, municipalities and organisations working on Nepal’s energy transition and climate policy.</p>
+      </div>
+      <div class="contact">
+        <div><span>Email</span><a href="mailto:tb.gokarna@gmail.com">tb.gokarna@gmail.com</a></div>
+        <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/gokarna-bahadur-thapa-a5bba72a3">Gokarna Bahadur Thapa</a></div>
+        <div><span>Based in</span>Kathmandu, Nepal</div>
+      </div>
+    </div>
+    <div class="fine">
+      <span><a href="../">← Back to home</a></span>
+      <span>© 2026 Gokarna Bahadur Thapa</span>
+    </div>
+  </div>
+</footer>
+
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lb-bar"><span id="lb-count">1 / 1</span><button class="lb-btn" id="lb-close" type="button" aria-label="Close photo viewer">×</button></div>
+  <div class="lb-stage" id="lb-stage">
+    <button class="lb-prev" id="lb-prev" type="button" aria-label="Previous photo">‹</button>
+    <img id="lb-img" alt="">
+    <button class="lb-next" id="lb-next" type="button" aria-label="Next photo">›</button>
+  </div>
+  <div class="lb-caption" id="lb-caption"></div>
+  <div class="lb-strip" id="lb-strip"></div>
+</div>
+
+<script>
+(function () {
+  var track = document.getElementById('track');
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
+  var dotsBox = document.getElementById('dots');
+  var count = document.getElementById('count');
+  var current = 0;
+
+  slides.forEach(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', function () { go(i); });
+    dotsBox.appendChild(b);
+  });
+  var dots = Array.prototype.slice.call(dotsBox.children);
+
+  function mark(i) {
+    current = i;
+    dots.forEach(function (d, j) { d.setAttribute('aria-current', j === i ? 'true' : 'false'); });
+    count.textContent = (i + 1) + ' / ' + slides.length;
+  }
+  function go(i) {
+    i = (i + slides.length) % slides.length;
+    track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+    mark(i);
+  }
+  document.getElementById('prev').addEventListener('click', function () { go(current - 1); });
+  document.getElementById('next').addEventListener('click', function () { go(current + 1); });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+  });
+  var t;
+  track.addEventListener('scroll', function () {
+    clearTimeout(t);
+    t = setTimeout(function () {
+      var i = Math.round(track.scrollLeft / track.clientWidth);
+      if (i !== current && i >= 0 && i < slides.length) mark(i);
+    }, 80);
+  });
+  mark(0);
+})();
+
+/* ---------- Photo galleries ----------
+   To add photos to a card, give its <div class="figure"> a data-photos attribute:
+   data-photos="photos/file1.jpg | Caption one ; photos/file2.jpg | Caption two"
+   Upload the image files into the education-and-experience/photos/ folder. */
+(function () {
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCount = document.getElementById('lb-count');
+  var lbCap = document.getElementById('lb-caption');
+  var lbStrip = document.getElementById('lb-strip');
+  var set = [], idx = 0, opener = null;
+
+  function parse(str) {
+    return str.split(';').map(function (part) {
+      var bits = part.split('|');
+      return { src: (bits[0] || '').trim(), cap: (bits[1] || '').trim() };
+    }).filter(function (p) { return p.src; });
+  }
+
+  document.querySelectorAll('.figure[data-photos]').forEach(function (fig) {
+    var photos = parse(fig.getAttribute('data-photos'));
+    if (!photos.length) return;
+    var stat = fig.querySelector('b');
+    var chip = fig.getAttribute('data-chip') || (stat ? Array.prototype.map.call(stat.childNodes, function (n) { return n.textContent.trim(); }).join(' ').trim() : '');
+    fig.classList.add('has-photos');
+    fig.removeAttribute('aria-hidden');
+    fig.innerHTML = '';
+
+    var main = document.createElement('button');
+    main.type = 'button'; main.className = 'g-main';
+    main.setAttribute('aria-label', 'Open photos full screen');
+    var mImg = document.createElement('img'); mImg.alt = photos[0].cap; mImg.src = photos[0].src; mImg.loading = 'lazy';
+    main.appendChild(mImg);
+    if (chip) { var c = document.createElement('span'); c.className = 'g-chip'; c.textContent = chip; main.appendChild(c); }
+    var z = document.createElement('span'); z.className = 'g-zoom'; z.textContent = photos.length + (photos.length > 1 ? ' photos' : ' photo'); main.appendChild(z);
+    fig.appendChild(main);
+
+    var cur = 0;
+    var thumbs = document.createElement('div'); thumbs.className = 'g-thumbs';
+    photos.forEach(function (p, i) {
+      var t = document.createElement('button'); t.type = 'button';
+      t.setAttribute('aria-label', 'Show photo ' + (i + 1) + (p.cap ? ': ' + p.cap : ''));
+      var ti = document.createElement('img'); ti.src = p.src; ti.alt = ''; ti.loading = 'lazy';
+      t.appendChild(ti);
+      t.addEventListener('click', function () { show(i); });
+      t.addEventListener('dblclick', function () { open(photos, i, t); });
+      thumbs.appendChild(t);
+    });
+    if (photos.length > 1) fig.appendChild(thumbs);
+    function show(i) {
+      cur = i; mImg.src = photos[i].src; mImg.alt = photos[i].cap;
+      Array.prototype.forEach.call(thumbs.children, function (b, j) { b.setAttribute('aria-current', j === i ? 'true' : 'false'); });
+    }
+    show(0);
+    main.addEventListener('click', function () { open(photos, cur, main); });
+  });
+
+  function render() {
+    var p = set[idx];
+    lbImg.src = p.src; lbImg.alt = p.cap || ('Photo ' + (idx + 1));
+    lbCount.textContent = (idx + 1) + ' / ' + set.length;
+    lbCap.textContent = p.cap;
+    Array.prototype.forEach.call(lbStrip.children, function (b, j) {
+      b.setAttribute('aria-current', j === idx ? 'true' : 'false');
+      if (j === idx) b.scrollIntoView({ block: 'nearest', inline: 'center' });
+    });
+    var many = set.length > 1;
+    document.getElementById('lb-prev').style.display = many ? '' : 'none';
+    document.getElementById('lb-next').style.display = many ? '' : 'none';
+  }
+  function open(photos, i, from) {
+    set = photos; idx = i; opener = from;
+    lbStrip.innerHTML = '';
+    photos.forEach(function (p, j) {
+      var b = document.createElement('button'); b.type = 'button';
+      b.setAttribute('aria-label', 'Photo ' + (j + 1));
+      var im = document.createElement('img'); im.src = p.src; im.alt = '';
+      b.appendChild(im);
+      b.addEventListener('click', function () { idx = j; render(); });
+      lbStrip.appendChild(b);
+    });
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    render();
+    document.getElementById('lb-close').focus();
+  }
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    if (opener) opener.focus();
+  }
+  function step(d) { idx = (idx + d + set.length) % set.length; render(); }
+
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function () { step(-1); });
+  document.getElementById('lb-next').addEventListener('click', function () { step(1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb || e.target.id === 'lb-stage') close(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') step(1);
+    if (e.key === 'ArrowLeft') step(-1);
+  });
+  var x0 = null;
+  var stage = document.getElementById('lb-stage');
+  stage.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
+  stage.addEventListener('pointerup', function (e) {
+    if (x0 === null) return;
+    var dx = e.clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+  });
+})();
+</script>
+</body>
+</html>
