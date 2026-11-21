@@ -93,6 +93,17 @@ footer a { color: var(--paper); }
   .three, footer .grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) { nav ul { gap: 14px; } .story-grid { grid-template-columns: 1fr; } }
+
+/* Dotted light background */
+:root { --paper: #FCFCFC; --surface: #FFFFFF; }
+body {
+  background-color: #FCFCFC;
+  background-image: radial-gradient(#E6E6E6 1px, transparent 1.3px), radial-gradient(#E6E6E6 1px, transparent 1.3px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+.top { background: rgba(252, 252, 252, .92); }
+.page-title { border-bottom-color: #E6E6E6; }
 </style>
 </head>
 <body>

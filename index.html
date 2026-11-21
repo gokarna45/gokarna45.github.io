@@ -171,6 +171,17 @@ footer a { color: var(--paper); }
   .hero { padding-top: 48px; }
   .badge { left: 8px; }
 }
+
+/* Dotted light background */
+:root { --paper: #FCFCFC; --surface: #FFFFFF; }
+body {
+  background-color: #FCFCFC;
+  background-image: radial-gradient(#E6E6E6 1px, transparent 1.3px), radial-gradient(#E6E6E6 1px, transparent 1.3px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+.top { background: rgba(252, 252, 252, .92); }
+.hero::after { background: radial-gradient(closest-side, rgba(105, 113, 132, .12), rgba(105, 113, 132, 0)); }
 </style>
 </head>
 <body>

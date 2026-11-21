@@ -175,6 +175,18 @@ footer a { color: var(--paper); }
   .list li { grid-template-columns: 1fr; gap: 2px; }
   .panel { padding: 24px; }
 }
+
+/* Dotted light background */
+:root { --paper: #FCFCFC; --surface: #FFFFFF; }
+body {
+  background-color: #FCFCFC;
+  background-image: radial-gradient(#E6E6E6 1px, transparent 1.3px), radial-gradient(#E6E6E6 1px, transparent 1.3px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+.top { background: rgba(252, 252, 252, .92); }
+.band { border-bottom-color: #E6E6E6; }
+.band::after { background: radial-gradient(closest-side, rgba(105, 113, 132, .10), rgba(105, 113, 132, 0)); }
 </style>
 </head>
 <body>
@@ -205,7 +217,6 @@ footer a { color: var(--paper); }
         <a href="#experience">Experience</a>
         <a href="#research">Research projects</a>
         <a href="#leadership">Leadership</a>
-        <a href="#training">Training</a>
       </div>
     </div>
   </section>
@@ -431,26 +442,6 @@ footer a { color: var(--paper); }
     </div>
   </section>
 
-  <!-- TRAINING -->
-  <section class="block" id="training">
-    <div class="wrap">
-      <div class="title">
-        <div class="label">Continuing learning</div>
-        <h2>Training &amp; certifications</h2>
-      </div>
-      <div class="panel" style="max-width: 860px; margin: 0 auto;">
-        <ul class="list">
-          <li><span class="d">Oct 2025</span><div><strong>Energy demand projection with MAED</strong><span>Model for Analysis of Energy Demand</span></div></li>
-          <li><span class="d">Jul 2025</span><div><strong>Life Cycle Thinking and Life Cycle Assessment</strong><span>Renewable and Sustainable Energy Laboratory, Kathmandu University</span></div></li>
-          <li><span class="d">Jun 2025</span><div><strong>Circular Economy in Industry</strong><span>UNIDO · UN SDG:Learn</span></div></li>
-          <li><span class="d">Jun 2025</span><div><strong>Global Energy and Climate Policy</strong></div></li>
-          <li><span class="d">Apr 2025</span><div><strong>Renewable Energy Deployment in Nigeria</strong><span>Global Energy Interconnection Development and Cooperation Organization (GEIDCO)</span></div></li>
-          <li><span class="d">Mar 2025</span><div><strong>Excel Time Series Models for Business Forecasting</strong></div></li>
-          <li><span class="d">Aug 2024</span><div><strong>CFD Foundation Course</strong><span>Flowthermolab</span></div></li>
-        </ul>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer id="contact">
