@@ -147,6 +147,14 @@ section.block { padding: 88px 0 8px; }
 .lb-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-width: 600px) { .lb-stage { padding: 0 8px; } .lb-prev, .lb-next { width: 40px; height: 40px; } }
 
+
+/* Section colours: peach for education, cream for experience */
+:root { --peach: #F9DBBB; --peach-line: #E9BF92; --cream: #FBF7D8; --cream-line: #E6DDA6; }
+.edu { background: var(--peach); border-color: var(--peach-line); }
+.edu .facts span { background: rgba(255, 255, 255, .55); color: var(--charcoal); }
+.slide { background: var(--cream); border-color: var(--cream-line); }
+.slide .client { border-top-color: var(--cream-line); }
+
 /* Footer */
 footer { margin-top: 110px; background: var(--charcoal); color: var(--paper); padding: 64px 0 40px; }
 footer .grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; }
