@@ -176,6 +176,7 @@ footer a { color: var(--paper); }
     <a class="brand" href="../">Gokarna B. Thapa</a>
     <nav aria-label="Main">
       <ul>
+        <li><a href="../#about">About</a></li>
         <li><a href="../#work">Work</a></li>
         <li><a href="../#publications">Publications</a></li>
         <li><a href="./" aria-current="page">Education &amp; experience</a></li>
@@ -281,7 +282,7 @@ footer a { color: var(--paper); }
           </article>
 
           <article class="slide" aria-roledescription="slide" aria-label="3 of 9">
-            <div class="figure" aria-hidden="true"><div class="k">Green hydrogen</div><div><b>14,048<small>t H₂/yr</small></b><p>from a modelled 100 MW electrolysis plant</p></div></div>
+            <div class="figure" aria-hidden="true" data-photos="photos/gh2-final-report.jpg | Final report: Stock Taking of Green Hydrogen Initiatives and Identification of Potential Green Hydrogen Projects in Nepal, submitted to AEPC (June 2026)"><div class="k">Green hydrogen</div><div><b>14,048<small>t H₂/yr</small></b><p>from a modelled 100 MW electrolysis plant</p></div></div>
             <div class="text">
               <div class="when">Feb 2025 – Nov 2026 · Multiscope Solution</div>
               <h3>Stock-taking of green hydrogen in Nepal</h3>
@@ -325,7 +326,7 @@ footer a { color: var(--paper); }
           </article>
 
           <article class="slide" aria-roledescription="slide" aria-label="6 of 9">
-            <div class="figure" aria-hidden="true"><div class="k">Field assessments</div><div><b>430<small>sites</small></b><p>industrial, commercial and residential energy audits</p></div></div>
+            <div class="figure" aria-hidden="true" data-photos="photos/solar-irrigation-pump.jpg | Solar irrigation pump in operation during the Madhesh Province field survey ; photos/audit-electrical-panel.jpg | Energy audit: inspecting an electrical distribution panel"><div class="k">Field assessments</div><div><b>430<small>sites</small></b><p>industrial, commercial and residential energy audits</p></div></div>
             <div class="text">
               <div class="when">Feb 2025 – Nov 2026 · Multiscope Solution</div>
               <h3>Energy audits and solar irrigation</h3>
@@ -339,7 +340,7 @@ footer a { color: var(--paper); }
           </article>
 
           <article class="slide" aria-roledescription="slide" aria-label="7 of 9">
-            <div class="figure" aria-hidden="true"><div class="k">Biogas monitoring</div><div><b>46<small>plants</small></b><p>inspected for quality and compliance</p></div></div>
+            <div class="figure" aria-hidden="true" data-photos="photos/aepc-biogas-monitoring.jpg | Field monitoring of a domestic biogas plant with the household, Kavrepalanchowk"><div class="k">Biogas monitoring</div><div><b>46<small>plants</small></b><p>inspected for quality and compliance</p></div></div>
             <div class="text">
               <div class="when">Jul 2026 · Kavrepalanchowk</div>
               <h3>Short-term Consultant Engineer</h3>
@@ -353,7 +354,7 @@ footer a { color: var(--paper); }
           </article>
 
           <article class="slide" aria-roledescription="slide" aria-label="8 of 9">
-            <div class="figure" aria-hidden="true"><div class="k">Agricultural energy</div><div><b>Solar<small>irrigation</small></b><p>energy surveys of farm technologies</p></div></div>
+            <div class="figure" aria-hidden="true" data-photos="photos/nic-krishi-aujar-karkhana.jpg | Krishi Aujar Karkhana Limited, Birgunj, operated by the National Innovation Centre"><div class="k">Agricultural energy</div><div><b>Solar<small>irrigation</small></b><p>energy surveys of farm technologies</p></div></div>
             <div class="text">
               <div class="when">Jul 2024 – Feb 2025 · Birgunj</div>
               <h3>Mechanical Engineer</h3>
@@ -569,6 +570,10 @@ footer a { color: var(--paper); }
       thumbs.appendChild(t);
     });
     if (photos.length > 1) fig.appendChild(thumbs);
+    mImg.addEventListener('load', function () {
+      var r = mImg.naturalWidth / mImg.naturalHeight;
+      mImg.style.objectFit = (r < 0.9 || r > 1.7) ? 'contain' : 'cover';
+    });
     function show(i) {
       cur = i; mImg.src = photos[i].src; mImg.alt = photos[i].cap;
       Array.prototype.forEach.call(thumbs.children, function (b, j) { b.setAttribute('aria-current', j === i ? 'true' : 'false'); });
