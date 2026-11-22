@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publications · Gokarna Bahadur Thapa</title>
+<meta name="description" content="Journal articles, manuscripts and conference presentations by Gokarna Bahadur Thapa on energy storage, hybrid renewables, energy access and hydrogen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Same palette as the home page: #F2F1EF, #D8CFD0, #B1A8A4, #697184, #413F3D.
+     Layout: title band; education cards with a figure panel; experience carousel (scroll-snap) with arrows and dots; lists for training and leadership. */
+  --paper: #F2F1EF;
+  --surface: #FBFAF9;
+  --blush: #D8CFD0;
+  --taupe: #B1A8A4;
+  --slate: #697184;
+  --slate-deep: #4D5466;
+  --charcoal: #413F3D;
+  --muted: #625D5A;
+  --display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--charcoal); font: 400 1rem/1.7 var(--body); }
+a { color: var(--slate-deep); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--slate); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+/* Header (same as home) */
+.top { position: sticky; top: 0; z-index: 10; background: rgba(242, 241, 239, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--blush); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; flex-wrap: wrap; }
+.brand { font: 400 1.45rem/1 var(--display); color: var(--charcoal); text-decoration: none; }
+nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; flex-wrap: wrap; }
+nav a { color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 600; }
+nav a:hover, nav a[aria-current="page"] { color: var(--charcoal); }
+nav a[aria-current="page"] { border-bottom: 1.5px solid var(--slate); padding-bottom: 3px; }
+
+
+.page-head { padding: 56px 0 36px; text-align: center; }
+.page-head .label { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--slate-deep); }
+.page-head h1 { font: 400 clamp(2.4rem, 5vw, 3.6rem)/1.08 var(--display); margin: 10px 0 12px; }
+.page-head p { margin: 0 auto; max-width: 60ch; color: var(--muted); }
+
+/* Bibliography panel */
+.bib { background: #fff; border: 1px solid #E3E3E3; border-radius: 10px; padding: 24px 28px 28px; max-width: 1040px; margin: 0 auto; box-shadow: 0 18px 40px -34px rgba(31, 30, 29, .5); }
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.tools { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.tools label { font-size: .9rem; color: var(--charcoal); display: flex; align-items: center; gap: 8px; }
+.tools select, .tools input { font: inherit; font-size: .9rem; padding: 7px 10px; border: 1px solid #D5D5D5; border-radius: 6px; background: #fff; color: var(--charcoal); }
+.tools input { width: 220px; }
+.counts { font-size: .85rem; color: var(--muted); }
+.group { margin-top: 12px; }
+.group > button { width: 100%; display: flex; align-items: center; gap: 12px; background: #DCDCDC; border: 0; border-radius: 4px; padding: 10px 18px; cursor: pointer; text-align: left; color: var(--charcoal); }
+.group > button .chev { display: inline-block; transition: transform .2s; font-size: .9rem; }
+.group > button[aria-expanded="false"] .chev { transform: rotate(-90deg); }
+.group > button .g { font: italic 400 1.35rem var(--body); }
+.group > button .n { font-style: italic; font-size: .95rem; color: var(--muted); }
+.entries { list-style: none; margin: 0; padding: 8px 4px 0; }
+.entry { padding: 12px 18px 10px; }
+.entry + .entry { border-top: 1px solid #EFEFEF; }
+.cite { line-height: 1.65; }
+.cite .t { font-weight: 700; color: #1f1e1d; }
+.cite .me { font-weight: 700; text-decoration: underline; text-decoration-color: var(--taupe); text-underline-offset: 3px; }
+.cite i { font-style: italic; }
+.badge { display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 2px; }
+.b-pub { background: var(--charcoal); color: #fff; } .b-acc { background: var(--slate); color: #fff; }
+.b-rev { border: 1.3px solid var(--slate); color: var(--slate-deep); } .b-prep { border: 1.3px dashed var(--taupe); color: var(--muted); }
+.b-talk { background: #C7E59B; color: #2F4A14; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 4px; font-size: .85rem; }
+.actions a, .actions button { color: #3F6DB5; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: none; }
+.actions a:hover, .actions button:hover { text-decoration: underline; }
+.actions .note { color: var(--muted); }
+.bibtex { display: none; margin: 10px 0 4px; position: relative; }
+.bibtex.open { display: block; }
+.bibtex pre { margin: 0; background: #F6F6F6; border: 1px solid #E6E6E6; border-radius: 6px; padding: 14px 16px; font: 12.5px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-x: auto; color: #333; }
+.bibtex .copy { position: absolute; top: 8px; right: 8px; font: 700 .75rem var(--body); padding: 5px 10px; border-radius: 5px; border: 1px solid #D5D5D5; background: #fff; cursor: pointer; }
+.empty { padding: 18px; color: var(--muted); }
+/* Footer */
+footer { margin-top: 110px; background: var(--charcoal); color: var(--paper); padding: 64px 0 40px; }
+footer .grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; }
+footer h2 { font: 400 clamp(2.2rem, 4.4vw, 3.2rem)/1.05 var(--display); }
+footer p { color: var(--blush); max-width: 52ch; }
+footer a { color: var(--paper); }
+.contact { display: grid; gap: 18px; }
+.contact div span { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe); margin-bottom: 2px; }
+.fine { margin-top: 48px; padding-top: 20px; border-top: 1px solid rgba(216, 207, 208, .2); font-size: .82rem; color: var(--taupe); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+
+/* Dotted light background */
+:root { --paper: #FCFCFC; --surface: #FFFFFF; }
+body {
+  background-color: #FCFCFC;
+  background-image: radial-gradient(#E6E6E6 1px, transparent 1.3px), radial-gradient(#E6E6E6 1px, transparent 1.3px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+.top { background: rgba(252, 252, 252, .92); }
+.band { border-bottom-color: #E6E6E6; }
+.band::after { background: radial-gradient(closest-side, rgba(105, 113, 132, .10), rgba(105, 113, 132, 0)); }
+
+@media (max-width: 860px) { footer .grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .bib { padding: 18px 14px; } .entry { padding: 12px 8px; } .tools input { width: 100%; } nav ul { gap: 14px; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../">Gokarna B. Thapa</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="../about-me/">About</a></li>
+        <li><a href="../#work">Work</a></li>
+        <li><a href="./" aria-current="page">Publications</a></li>
+        <li><a href="../education-and-experience/">Education &amp; experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-head">
+    <div class="wrap">
+      <div class="label">Journals</div>
+      <h1>Academic publications</h1>
+      <p>Journal articles, manuscripts and conference presentations on energy storage, hybrid renewables, energy access and hydrogen markets.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="bib" aria-label="Publication list">
+      <div class="toolbar">
+        <div class="tools">
+          <label for="groupby">Group by
+            <select id="groupby">
+              <option value="year">Year</option>
+              <option value="status">Status</option>
+              <option value="type">Type</option>
+            </select>
+          </label>
+          <label for="q" class="sr"><input id="q" type="search" placeholder="Search titles, authors, journals" aria-label="Search publications"></label>
+        </div>
+        <span class="counts" id="counts"></span>
+      </div>
+      <div id="list"></div>
+    </section>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h2>Let’s discuss energy</h2>
+        <p>I’m glad to hear from researchers, municipalities and organisations working on Nepal’s energy transition and climate policy.</p>
+      </div>
+      <div class="contact">
+        <div><span>Email</span><a href="mailto:tb.gokarna@gmail.com">tb.gokarna@gmail.com</a></div>
+        <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/gokarna-bahadur-thapa-a5bba72a3">Gokarna Bahadur Thapa</a></div>
+        <div><span>Based in</span>Kathmandu, Nepal</div>
+      </div>
+    </div>
+    <div class="fine">
+      <span><a href="../">← Back to home</a></span>
+      <span>© 2026 Gokarna Bahadur Thapa</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+var PUBS = [
+  { year: 2026, month: "April 2026", status: "Published", type: "Journal article",
+    title: "Energy storage potential of used electric vehicle batteries for supporting surplus hydro-energy in Nepal",
+    authors: ["Thapa, G. B.", "Dev, A.", "Poudyal, R."], venue: "Journal of Energy Storage", publisher: "Elsevier",
+    details: "154: 121308", doi: "10.1016/j.est.2026.121308",
+    bibtex: "@article{thapa2026energy,\n  title     = {Energy storage potential of used electric vehicle batteries for supporting surplus hydro-energy in Nepal},\n  author    = {Thapa, Gokarna Bahadur and Dev, A. and Poudyal, R.},\n  journal   = {Journal of Energy Storage},\n  volume    = {154},\n  pages     = {121308},\n  year      = {2026},\n  month     = apr,\n  publisher = {Elsevier},\n  doi       = {10.1016/j.est.2026.121308}\n}" },
+  { year: 2026, status: "Accepted", type: "Journal article",
+    title: "A multi-method review of hybrid renewable energy systems in climate-vulnerable communities: integrating bibliometric analysis, modelling approach synthesis and meta-analysis",
+    authors: ["Dev, A.", "Thapa, G. B.", "Brent, A."], venue: "Global Energy Interconnection", publisher: "KeAi",
+    details: "accepted, in press" },
+  { year: 2026, status: "Under review", type: "Journal article",
+    title: "Comparative techno-economic assessment of fuel cells, second-life batteries and redox flow batteries as alternatives to diesel generators for industrial power backup in Nepal",
+    authors: ["Thapa, G. B.", "Dev, A."], venue: "Energy Sources, Part B: Economics, Planning, and Policy", publisher: "Taylor & Francis" },
+  { year: 2026, status: "Under review", type: "Journal article",
+    title: "Evaluating energy access as adaptive infrastructure: a double machine learning assessment of energy access, climate shocks and household welfare in the Hindu Kush Himalaya",
+    authors: ["Dev, A.", "Brent, A.", "Anderson, T.", "Thapa, G. B."], venue: "Energy Policy", publisher: "Elsevier" },
+  { year: 2026, status: "In preparation", type: "Journal article",
+    title: "Fleet-scale short-run exogenous-price bias in hydrogen electrolyser techno-economics: quantification, decomposition and correction using re-cleared Iberian day-ahead bid curves",
+    authors: ["Thapa, G. B.", "Dev, A.", "Sapkota, A.", "Baral, B."], venue: "Applied Energy", publisher: "Elsevier", target: true },
+  { year: 2023, month: "December 2023", status: "Presented", type: "Conference presentation",
+    title: "Modelling and experiment of a hydrogen humidification system for PEM fuel cell applications",
+    authors: ["Thapa, G. B."], venue: "3rd University Scholar Conference, Kathmandu University", details: "Oral presentation" }
+];
+var STATUS_ORDER = ["Published", "Accepted", "Under review", "In preparation", "Presented"];
+var BADGE = { "Published": "b-pub", "Accepted": "b-acc", "Under review": "b-rev", "In preparation": "b-prep", "Presented": "b-talk" };
+
+function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+function authorHtml(list) {
+  var parts = list.map(function (a) { return a.indexOf("Thapa, G") === 0 ? '<span class="me">' + esc(a) + '</span>' : esc(a); });
+  if (parts.length > 1) parts[parts.length - 1] = "and " + parts[parts.length - 1];
+  return parts.join(parts.length > 2 ? "; " : " ");
+}
+function entryHtml(p, i) {
+  var venue = p.target ? 'Target journal: <i>' + esc(p.venue) + '</i>' : '<i>' + esc(p.venue) + '</i>';
+  var bits = [venue + (p.details ? ', ' + esc(p.details) : '')];
+  if (p.month) bits.push(esc(p.month));
+  var h = '<li class="entry"><div class="cite"><span class="t">' + esc(p.title) + '.</span> ' + authorHtml(p.authors) + ' ' + bits.join('. ') + '.' +
+          '<span class="badge ' + BADGE[p.status] + '">' + esc(p.status) + '</span></div><div class="actions">';
+  if (p.doi) {
+    h += '<a href="https://doi.org/' + p.doi + '" target="_blank" rel="noopener">↗ doi</a>';
+    h += '<a href="https://doi.org/' + p.doi + '" target="_blank" rel="noopener">link</a>';
+  }
+  if (p.bibtex) h += '<button type="button" aria-expanded="false" data-bib="' + i + '">bibtex ▾</button>';
+  if (!p.doi) h += '<span class="note">' + (p.type === "Conference presentation" ? 'Conference talk' : 'Full text available after publication') + '</span>';
+  h += '</div>';
+  if (p.bibtex) h += '<div class="bibtex" id="bib-' + i + '"><button class="copy" type="button" data-copy="' + i + '">Copy</button><pre>' + esc(p.bibtex) + '</pre></div>';
+  return h + '</li>';
+}
+function render() {
+  var by = document.getElementById("groupby").value;
+  var q = document.getElementById("q").value.trim().toLowerCase();
+  var items = PUBS.map(function (p, i) { return { p: p, i: i }; }).filter(function (o) {
+    if (!q) return true;
+    return (o.p.title + " " + o.p.authors.join(" ") + " " + o.p.venue + " " + o.p.status).toLowerCase().indexOf(q) > -1;
+  });
+  var groups = {}, keys = [];
+  items.forEach(function (o) {
+    var k = by === "year" ? o.p.year : by === "status" ? o.p.status : o.p.type;
+    if (!groups[k]) { groups[k] = []; keys.push(k); }
+    groups[k].push(o);
+  });
+  if (by === "year") keys.sort(function (a, b) { return b - a; });
+  if (by === "status") keys.sort(function (a, b) { return STATUS_ORDER.indexOf(a) - STATUS_ORDER.indexOf(b); });
+  var html = keys.map(function (k, gi) {
+    return '<div class="group"><button type="button" aria-expanded="true" aria-controls="g' + gi + '"><span class="chev">▾</span><span class="g">' + esc(k) +
+      '</span><span class="n">(' + groups[k].length + ')</span></button><ul class="entries" id="g' + gi + '">' +
+      groups[k].map(function (o) { return entryHtml(o.p, o.i); }).join("") + '</ul></div>';
+  }).join("");
+  document.getElementById("list").innerHTML = html || '<p class="empty">No publications match your search.</p>';
+  document.getElementById("counts").textContent = items.length + (items.length === 1 ? " item" : " items");
+}
+document.getElementById("list").addEventListener("click", function (e) {
+  var g = e.target.closest(".group > button");
+  if (g) {
+    var open = g.getAttribute("aria-expanded") === "true";
+    g.setAttribute("aria-expanded", open ? "false" : "true");
+    document.getElementById(g.getAttribute("aria-controls")).hidden = open;
+    return;
+  }
+  var b = e.target.closest("[data-bib]");
+  if (b) {
+    var box = document.getElementById("bib-" + b.getAttribute("data-bib"));
+    var isOpen = box.classList.toggle("open");
+    b.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    b.textContent = isOpen ? "bibtex ▴" : "bibtex ▾";
+    return;
+  }
+  var c = e.target.closest("[data-copy]");
+  if (c) {
+    var text = PUBS[+c.getAttribute("data-copy")].bibtex;
+    try {
+      navigator.clipboard.writeText(text).then(function () { c.textContent = "Copied"; }, function () { c.textContent = "Select and copy"; });
+    } catch (err) { c.textContent = "Select and copy"; }
+  }
+});
+document.getElementById("groupby").addEventListener("change", render);
+document.getElementById("q").addEventListener("input", render);
+render();
+</script>
+</body>
+</html>

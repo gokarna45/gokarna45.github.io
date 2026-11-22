@@ -86,6 +86,8 @@ nav a:hover { color: var(--charcoal); }
 .interests span { font-size: .84rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--blush); }
 @media (max-width: 900px) { .about { grid-template-columns: 1fr; gap: 28px; } .about img { max-width: 320px; } }
 
+.papers-btn { min-width: 260px; text-align: center; letter-spacing: .08em; text-transform: uppercase; padding: 15px 28px; }
+.papers-rule { width: 84px; height: 1.5px; background: var(--charcoal); margin: 22px auto 0; }
 /* Figures band */
 .figures { background: var(--charcoal); color: var(--paper); }
 .figures .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -193,7 +195,7 @@ body {
       <ul>
         <li><a href="about-me/" target="_blank" rel="noopener">About</a></li>
         <li><a href="#work">Work</a></li>
-        <li><a href="#publications">Publications</a></li>
+        <li><a href="publications/" target="_blank" rel="noopener">Publications</a></li>
         <li><a href="education-and-experience/" target="_blank" rel="noopener">Education &amp; experience</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -287,49 +289,15 @@ body {
 
   <section class="block" id="publications">
     <div class="wrap">
-      <div class="title">
+      <div class="title" style="margin-bottom: 28px;">
         <div class="label">Journals</div>
         <h2>Academic publications</h2>
         <p>Peer-reviewed articles and manuscripts on energy storage, hybrid renewables, energy access and hydrogen markets.</p>
       </div>
-      <ul class="pubs">
-        <li>
-          <span class="status s-pub">Published 2026</span>
-          <div>
-            <div class="t"><a href="https://doi.org/10.1016/j.est.2026.121308" target="_blank" rel="noopener">Energy storage potential of used electric vehicle batteries for supporting surplus hydro-energy in Nepal</a></div>
-            <div class="by"><b>Thapa G.B.</b>, Dev A., Poudyal R. · <i>Journal of Energy Storage</i> (Elsevier)</div>
-          </div>
-        </li>
-        <li>
-          <span class="status s-acc">Accepted 2026</span>
-          <div>
-            <div class="t">A multi-method review of hybrid renewable energy systems in climate-vulnerable communities</div>
-            <div class="by">Dev A., <b>Thapa G.B.</b>, Brent A. · <i>Global Energy Interconnection</i> (KeAi)</div>
-          </div>
-        </li>
-        <li>
-          <span class="status s-rev">Under review</span>
-          <div>
-            <div class="t">Comparative techno-economic assessment of fuel cells, second-life batteries and redox flow batteries as alternatives to diesel generators for industrial backup in Nepal</div>
-            <div class="by"><b>Thapa G.B.</b>, Dev A. · <i>Energy Sources, Part B</i> (Taylor &amp; Francis)</div>
-          </div>
-        </li>
-        <li>
-          <span class="status s-rev">Under review</span>
-          <div>
-            <div class="t">Evaluating energy access as adaptive infrastructure: a double machine learning assessment in the Hindu Kush Himalaya</div>
-            <div class="by">Dev A., Brent A., Anderson T., <b>Thapa G.B.</b> · <i>Energy Policy</i> (Elsevier)</div>
-          </div>
-        </li>
-        <li>
-          <span class="status s-prep">In preparation</span>
-          <div>
-            <div class="t">Fleet-scale short-run exogenous-price bias in hydrogen electrolyser techno-economics, using re-cleared Iberian day-ahead bid curves</div>
-            <div class="by"><b>Thapa G.B.</b>, Dev A., Sapkota A., Baral B. · target: <i>Applied Energy</i></div>
-          </div>
-        </li>
-      </ul>
-      <div class="center"><a class="btn dark" href="https://doi.org/10.1016/j.est.2026.121308" target="_blank" rel="noopener">Read the published paper</a></div>
+      <div class="center" style="margin-top: 0;">
+        <a class="btn dark papers-btn" href="publications/" target="_blank" rel="noopener">Papers</a>
+        <div class="papers-rule" aria-hidden="true"></div>
+      </div>
     </div>
   </section>
 
