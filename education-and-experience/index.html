@@ -187,6 +187,19 @@ body {
 .top { background: rgba(252, 252, 252, .92); }
 .band { border-bottom-color: #E6E6E6; }
 .band::after { background: radial-gradient(closest-side, rgba(105, 113, 132, .10), rgba(105, 113, 132, 0)); }
+
+/* Three-column black footer (same as home page) */
+footer.foot3 { background: #000; color: #fff; padding: 56px 0 28px; margin-top: 96px; border-top: 1px solid #000; }
+.cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+.foot3 h2 { font: 600 1.05rem/1.3 var(--body); margin: 0 0 22px; color: #fff; }
+.foot3 p { margin: 0 0 8px; color: #fff; max-width: none; font-weight: 500; font-size: .95rem; }
+.foot3 ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.foot3 a { color: #fff; text-decoration: none; font-weight: 500; }
+.foot3 a:hover, .foot3 a[aria-current="page"] { text-decoration: underline; text-underline-offset: 3px; }
+.foot3 .social a { text-decoration: underline; text-underline-offset: 3px; }
+footer.foot3 nav a, footer.foot3 nav a[aria-current="page"] { color: #fff; border-bottom: 0; padding-bottom: 0; font-size: .95rem; }
+.foot3 .copy { margin-top: 48px; text-align: center; font-size: .8rem; color: #8A8A8A; font-weight: 400; }
+@media (max-width: 700px) { .cols3 { grid-template-columns: 1fr; gap: 36px; } }
 </style>
 </head>
 <body>
@@ -444,23 +457,31 @@ body {
 
 </main>
 
-<footer id="contact">
+<footer id="contact" class="foot3">
   <div class="wrap">
-    <div class="grid">
+    <div class="cols3">
       <div>
-        <h2>Let’s discuss energy</h2>
-        <p>I’m glad to hear from researchers, municipalities and organisations working on Nepal’s energy transition and climate policy.</p>
+        <h2>Contact</h2>
+        <p><a href="mailto:tb.gokarna@gmail.com">tb.gokarna@gmail.com</a></p>
+        <p>Kathmandu, Nepal</p>
       </div>
-      <div class="contact">
-        <div><span>Email</span><a href="mailto:tb.gokarna@gmail.com">tb.gokarna@gmail.com</a></div>
-        <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/gokarna-bahadur-thapa-a5bba72a3">Gokarna Bahadur Thapa</a></div>
-        <div><span>Based in</span>Kathmandu, Nepal</div>
+      <nav aria-label="Footer pages">
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="../about-me/">About Me</a></li>
+          <li><a href="../education-and-experience/" aria-current="page">Education &amp; Experience</a></li>
+          <li><a href="../publications/">Journal Publications</a></li>
+          <li><a href="../#work">Selected Work</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Social Media</h2>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/gokarna-bahadur-thapa-a5bba72a3" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
       </div>
     </div>
-    <div class="fine">
-      <span><a href="../">← Back to home</a></span>
-      <span>© 2026 Gokarna Bahadur Thapa</span>
-    </div>
+    <p class="copy">© 2026 Gokarna Bahadur Thapa · <a href="../">Back to home</a></p>
   </div>
 </footer>
 
