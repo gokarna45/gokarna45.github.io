@@ -293,6 +293,23 @@ section.block#experience { padding-bottom: 96px; }
 @media (max-width: 900px) { #work .cards { grid-auto-columns: calc((100% - 20px) / 2); } }
 @media (max-width: 580px) { #work .cards { grid-auto-columns: 88%; } .w-prev { left: -8px; } .w-next { right: -8px; } }
 @media (prefers-reduced-motion: reduce) { #work .cards { scroll-behavior: auto; } }
+
+/* Selected work: looping carousel with the middle card in focus */
+#work .w-viewport { overflow: hidden; padding: 20px 0 46px; margin: -20px 0 -12px; }
+#work .cards { display: flex; gap: 20px; overflow: visible; padding: 0; margin: 0; scroll-snap-type: none; grid-auto-flow: initial; will-change: transform; }
+#work .cards .card { flex: 0 0 calc((100% - 40px) / 3); scroll-snap-align: none; cursor: pointer;
+  opacity: .5; transform: scale(.93); filter: saturate(.7);
+  transition: transform .7s cubic-bezier(.65, 0, .35, 1), opacity .7s ease, box-shadow .7s ease, border-color .7s ease, filter .7s ease; }
+#work .cards .card:hover { opacity: .8; }
+#work .cards .card.is-active { opacity: 1; filter: none; cursor: default; transform: translateY(-6px) scale(1);
+  box-shadow: 0 22px 40px -24px rgba(36, 35, 33, .5); border-color: #C1E3D4; }
+.paused #work .cards .card.is-active::after, .work-slider.paused .card.is-active::after { animation-play-state: paused; }
+#work .w-prev { left: -22px; } #work .w-next { right: -22px; }
+@media (max-width: 700px) {
+  #work .cards .card { flex-basis: 78%; }
+  #work .w-prev { left: -6px; } #work .w-next { right: -6px; }
+}
+@media (prefers-reduced-motion: reduce) { #work .cards .card { transition: none; } }
 </style>
 </head>
 <body>
@@ -356,7 +373,8 @@ section.block#experience { padding-bottom: 96px; }
       </div>
       <div class="work-slider">
         <button class="w-arrow w-prev" type="button" aria-label="Previous project">‹</button>
-        <div class="cards" id="workTrack" tabindex="0" aria-label="Selected work, one row">
+        <div class="w-viewport">
+        <div class="cards" id="workTrack" aria-live="polite">
         <article class="card">
           <span class="tag">Climate &amp; energy</span>
           <h3>BEACON: community and national energy resilience</h3>
@@ -394,6 +412,7 @@ section.block#experience { padding-bottom: 96px; }
           <div class="meta">Kathmandu University</div>
         </article>
       </div>
+        </div>
         <button class="w-arrow w-next" type="button" aria-label="Next project">›</button>
       </div>
     </div>
@@ -501,37 +520,90 @@ section.block#experience { padding-bottom: 96px; }
 
 <script>
 (function () {
-  var grid = document.querySelector('#work .cards');
-  if (!grid) return;
-  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var track = document.getElementById('workTrack');
+  if (!track) return;
+  var viewport = track.parentElement;
+  var slider = viewport.parentElement;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DELAY = 3500, i = 0, timer = null, visible = true, hovering = false;
-  grid.style.setProperty('--cycle', DELAY + 'ms');
-  function show(n) {
-    cards.forEach(function (c) { c.classList.remove('is-active'); });
-    void cards[n].offsetWidth;
-    cards[n].classList.add('is-active');
-    var max = grid.scrollWidth - grid.clientWidth;
-    grid.scrollTo({ left: Math.min(cards[n].offsetLeft - cards[0].offsetLeft, max), behavior: reduce ? 'auto' : 'smooth' });
+  var DELAY = 3500, SLIDE = 700, timer = null, busy = false, paused = false, visible = true;
+  track.style.setProperty('--cycle', DELAY + 'ms');
+
+  /* Put the last card first, so the first card (BEACON) starts in the middle. */
+  track.insertBefore(track.lastElementChild, track.firstElementChild);
+
+  function step() {
+    var c = track.children;
+    var w = c[0].offsetWidth;
+    var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 20;
+    return { w: w, gap: gap, base: (viewport.clientWidth - w) / 2 - (w + gap) };
   }
-  var prevB = document.querySelector('#work .w-prev'), nextB = document.querySelector('#work .w-next');
-  function jump(d) { stop(); i = (i + d + cards.length) % cards.length; show(i); start(); }
-  if (prevB) prevB.addEventListener('click', function () { jump(-1); });
-  if (nextB) nextB.addEventListener('click', function () { jump(1); });
-  function next() { i = (i + 1) % cards.length; show(i); }
-  function start() { if (!timer && !reduce && visible && !hovering) timer = setInterval(next, DELAY); }
+  function place(x, animate) {
+    track.style.transition = animate ? 'transform ' + SLIDE + 'ms cubic-bezier(.65, 0, .35, 1)' : 'none';
+    track.style.transform = 'translateX(' + x + 'px)';
+  }
+  function mark() {
+    Array.prototype.forEach.call(track.children, function (c, k) {
+      c.classList.toggle('is-active', k === 1);
+      c.setAttribute('aria-hidden', k === 1 ? 'false' : 'true');
+    });
+  }
+  function reset() { place(step().base, false); mark(); }
+
+  function forward() {
+    if (busy) return;
+    var m = step();
+    if (reduce) { track.appendChild(track.firstElementChild); reset(); return; }
+    busy = true;
+    track.children[1].classList.remove('is-active');
+    track.children[2].classList.add('is-active');
+    place(m.base - (m.w + m.gap), true);
+    setTimeout(function () {
+      track.appendChild(track.firstElementChild);
+      reset(); busy = false;
+    }, SLIDE);
+  }
+  function backward() {
+    if (busy) return;
+    var m = step();
+    track.insertBefore(track.lastElementChild, track.firstElementChild);
+    if (reduce) { reset(); return; }
+    busy = true;
+    place(m.base - (m.w + m.gap), false);
+    void track.offsetWidth;
+    track.children[2].classList.remove('is-active');
+    track.children[1].classList.add('is-active');
+    place(m.base, true);
+    setTimeout(function () { reset(); busy = false; }, SLIDE);
+  }
+
+  function start() { stop(); if (!reduce && !paused && visible && !document.hidden) timer = setInterval(forward, DELAY + SLIDE); }
   function stop() { clearInterval(timer); timer = null; }
-  grid.addEventListener('mouseenter', function () { hovering = true; stop(); grid.classList.add('paused'); });
-  grid.addEventListener('mouseleave', function () { hovering = false; grid.classList.remove('paused'); show(i); start(); });
-  grid.addEventListener('focusin', function (e) { var c = e.target.closest('.card'); hovering = true; stop(); if (c) { i = cards.indexOf(c); show(i); } });
-  grid.addEventListener('focusout', function () { hovering = false; start(); });
+  function restartBar() { var a = track.children[1]; a.classList.remove('is-active'); void a.offsetWidth; a.classList.add('is-active'); }
+
+  slider.querySelector('.w-next').addEventListener('click', function () { forward(); start(); });
+  slider.querySelector('.w-prev').addEventListener('click', function () { backward(); start(); });
+  slider.addEventListener('mouseenter', function () { paused = true; stop(); slider.classList.add('paused'); });
+  slider.addEventListener('mouseleave', function () { paused = false; slider.classList.remove('paused'); restartBar(); start(); });
+  slider.addEventListener('focusin', function () { paused = true; stop(); });
+  slider.addEventListener('focusout', function () { paused = false; start(); });
+  /* Clicking a side card brings it to the middle. */
+  track.addEventListener('click', function (e) {
+    var c = e.target.closest('.card'); if (!c) return;
+    var k = Array.prototype.indexOf.call(track.children, c);
+    if (k === 2) forward(); else if (k === 0) backward();
+  });
+  var x0 = null;
+  viewport.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
+  viewport.addEventListener('pointerup', function (e) {
+    if (x0 === null) return; var dx = e.clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) { dx < 0 ? forward() : backward(); start(); }
+  });
+  window.addEventListener('resize', reset);
+  document.addEventListener('visibilitychange', start);
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) {
-      visible = es[0].isIntersecting;
-      if (visible) { show(i); start(); } else { stop(); }
-    }, { threshold: 0.25 }).observe(grid);
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) { restartBar(); start(); } else stop(); }, { threshold: 0.3 }).observe(slider);
   }
-  show(0); start();
+  reset(); start();
 })();
 </script>
 </body>
