@@ -255,6 +255,44 @@ footer.foot3 { background: #000; color: #fff; padding: 56px 0 28px; margin-top: 
 .foot3 .copy { margin-top: 48px; text-align: center; font-size: .8rem; color: #8A8A8A; font-weight: 400; }
 section.block#experience { padding-bottom: 96px; }
 @media (max-width: 700px) { .cols3 { grid-template-columns: 1fr; gap: 36px; } }
+
+/* Auto-cycling highlight on Selected work cards */
+.cards .card { position: relative; overflow: hidden; transition: transform .45s ease, box-shadow .45s ease, border-color .45s ease; }
+.cards .card:hover, .cards .card.is-active {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 48px -26px rgba(36, 35, 33, .45);
+  border-color: #C1E3D4;
+}
+.cards .card.is-active .tag { background: #3268C0; color: #fff; }
+.cards .card::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 0;
+  background: linear-gradient(90deg, #DDEBD0, #3268C0);
+}
+.cards .card.is-active::after { animation: cardTimer var(--cycle, 3500ms) linear forwards; }
+.cards.paused .card.is-active::after { animation-play-state: paused; }
+@keyframes cardTimer { from { width: 0; } to { width: 100%; } }
+@media (prefers-reduced-motion: reduce) {
+  .cards .card, .cards .card:hover, .cards .card.is-active { transition: none; transform: none; }
+  .cards .card::after { display: none; }
+}
+
+/* Selected work: one row slider */
+#work .cards .card:hover, #work .cards .card.is-active { box-shadow: 0 16px 28px -20px rgba(36, 35, 33, .45); }
+.work-slider { position: relative; }
+#work .cards {
+  display: grid; grid-auto-flow: column; grid-template-columns: none;
+  grid-auto-columns: calc((100% - 40px) / 3); gap: 20px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 14px 4px 44px; margin: -14px -4px -10px; scrollbar-width: none;
+}
+#work .cards::-webkit-scrollbar { display: none; }
+#work .cards .card { scroll-snap-align: start; }
+.w-arrow { position: absolute; top: calc(50% - 32px); z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #E6E2D8; background: #fff; color: #242321; font-size: 1.6rem; line-height: 1; cursor: pointer; box-shadow: 0 8px 20px -12px rgba(36, 35, 33, .5); }
+.w-arrow:hover { background: #3268C0; color: #fff; border-color: #3268C0; }
+.w-prev { left: -22px; } .w-next { right: -22px; }
+@media (max-width: 900px) { #work .cards { grid-auto-columns: calc((100% - 20px) / 2); } }
+@media (max-width: 580px) { #work .cards { grid-auto-columns: 88%; } .w-prev { left: -8px; } .w-next { right: -8px; } }
+@media (prefers-reduced-motion: reduce) { #work .cards { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
@@ -316,7 +354,9 @@ section.block#experience { padding-bottom: 96px; }
       <div class="title" style="margin-top: 36px;">
         <p>Feasibility studies, energy models and policy support for Nepal’s government agencies and development partners.</p>
       </div>
-      <div class="cards">
+      <div class="work-slider">
+        <button class="w-arrow w-prev" type="button" aria-label="Previous project">‹</button>
+        <div class="cards" id="workTrack" tabindex="0" aria-label="Selected work, one row">
         <article class="card">
           <span class="tag">Climate &amp; energy</span>
           <h3>BEACON: community and national energy resilience</h3>
@@ -353,6 +393,8 @@ section.block#experience { padding-bottom: 96px; }
           <p>Assessed how used electric-vehicle batteries could store Nepal’s surplus hydropower. Published in the Journal of Energy Storage.</p>
           <div class="meta">Kathmandu University</div>
         </article>
+      </div>
+        <button class="w-arrow w-next" type="button" aria-label="Next project">›</button>
       </div>
     </div>
   </section>
@@ -456,5 +498,41 @@ section.block#experience { padding-bottom: 96px; }
   </div>
 </footer>
 
+
+<script>
+(function () {
+  var grid = document.querySelector('#work .cards');
+  if (!grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DELAY = 3500, i = 0, timer = null, visible = true, hovering = false;
+  grid.style.setProperty('--cycle', DELAY + 'ms');
+  function show(n) {
+    cards.forEach(function (c) { c.classList.remove('is-active'); });
+    void cards[n].offsetWidth;
+    cards[n].classList.add('is-active');
+    var max = grid.scrollWidth - grid.clientWidth;
+    grid.scrollTo({ left: Math.min(cards[n].offsetLeft - cards[0].offsetLeft, max), behavior: reduce ? 'auto' : 'smooth' });
+  }
+  var prevB = document.querySelector('#work .w-prev'), nextB = document.querySelector('#work .w-next');
+  function jump(d) { stop(); i = (i + d + cards.length) % cards.length; show(i); start(); }
+  if (prevB) prevB.addEventListener('click', function () { jump(-1); });
+  if (nextB) nextB.addEventListener('click', function () { jump(1); });
+  function next() { i = (i + 1) % cards.length; show(i); }
+  function start() { if (!timer && !reduce && visible && !hovering) timer = setInterval(next, DELAY); }
+  function stop() { clearInterval(timer); timer = null; }
+  grid.addEventListener('mouseenter', function () { hovering = true; stop(); grid.classList.add('paused'); });
+  grid.addEventListener('mouseleave', function () { hovering = false; grid.classList.remove('paused'); show(i); start(); });
+  grid.addEventListener('focusin', function (e) { var c = e.target.closest('.card'); hovering = true; stop(); if (c) { i = cards.indexOf(c); show(i); } });
+  grid.addEventListener('focusout', function () { hovering = false; start(); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      visible = es[0].isIntersecting;
+      if (visible) { show(i); start(); } else { stop(); }
+    }, { threshold: 0.25 }).observe(grid);
+  }
+  show(0); start();
+})();
+</script>
 </body>
 </html>
